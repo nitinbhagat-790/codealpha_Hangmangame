@@ -1,12 +1,9 @@
 import random
 
-# List of 5 predefined words
 words = ["python", "hangman", "coding", "laptop", "keyboard"]
 
-# Select a random word
 chosen_word = random.choice(words)
 
-# Create hidden word display
 display = ["_"] * len(chosen_word)
 
 wrong_guesses = 0
@@ -21,7 +18,6 @@ while wrong_guesses < max_wrong_guesses and "_" in display:
 
     guess = input("Enter a letter: ").lower()
 
-    # Validate input
     if len(guess) != 1 or not guess.isalpha():
         print("Please enter a single letter.")
         continue
@@ -32,7 +28,6 @@ while wrong_guesses < max_wrong_guesses and "_" in display:
 
     guessed_letters.append(guess)
 
-    # Check if letter exists in word
     if guess in chosen_word:
         for i in range(len(chosen_word)):
             if chosen_word[i] == guess:
@@ -42,10 +37,8 @@ while wrong_guesses < max_wrong_guesses and "_" in display:
         wrong_guesses += 1
         print(" Wrong! ❌️")
 
-# Game result
 if "_" not in display:
     print("\n🎉 Congratulations! You guessed the word:", chosen_word)
 else:
     print("\n💀 Game Over!")
     print("The word was:", chosen_word)
-
